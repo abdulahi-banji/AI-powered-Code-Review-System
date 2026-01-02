@@ -22,7 +22,7 @@ app = FastAPI(title="AI Code Review API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -69,7 +69,7 @@ def review_code(payload: CodeReviewRequest):
         raise HTTPException(status_code=400, detail="Code snippet cannot be empty")
 
     prompt = f"""
-You are a senior software engineer performing a professional code review.
+You are a strict senior software engineer performing a professional code review.
 
 Analyze the following {payload.language} code.
 
@@ -163,3 +163,7 @@ Code:
         raise HTTPException(status_code=500, detail="AI returned invalid JSON")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
