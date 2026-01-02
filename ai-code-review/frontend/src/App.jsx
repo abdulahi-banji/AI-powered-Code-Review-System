@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Landing from './components/Landing'
-import './App.css'
 
 function App() {
   const [showLanding, setShowLanding] = useState(true)
