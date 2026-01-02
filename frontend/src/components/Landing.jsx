@@ -81,7 +81,7 @@ export default function Landing({ onNavigate }) {
                 {/* <a href=""></a> */}
               </button>
               <a 
-                href="#about"
+                href="#"
                 className="flex items-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-105"
               >
                 <Cpu className="w-5 h-5" />
