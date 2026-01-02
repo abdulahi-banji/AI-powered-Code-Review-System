@@ -7,7 +7,7 @@ export default function Landing({ onNavigate }) {
       {/* Grid Pattern Overlay */}
       <div className="fixed inset-0 grid-pattern pointer-events-none" />
 
-      {/* Navigation */}
+      {/* Nav bar */}
       <nav className="fixed top-0 w-full z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ export default function Landing({ onNavigate }) {
               <span className="text-sm text-indigo-300 font-medium">Powered by OpenAI GPT-4</span>
             </motion.div>
 
-            {/* Main Title */}
+            {/* Actual Title*/}
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
               <span className="text-gradient">AI-Powered</span>
               <br />
@@ -64,7 +64,7 @@ export default function Landing({ onNavigate }) {
               using advanced AI. Reduce errors by 25% and improve review efficiency by 40%.
             </p>
 
-            {/* CTA Buttons */}
+            {/*  Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -78,6 +78,7 @@ export default function Landing({ onNavigate }) {
                 <Terminal className="w-5 h-5" />
                 Try Demo
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {/* <a href=""></a> */}
               </button>
               <a 
                 href="#about"
@@ -200,6 +201,7 @@ export default function Landing({ onNavigate }) {
               </h3>
               <div className="bg-[#020617] border border-white/10 rounded-xl p-4 font-mono text-sm text-gray-300">
                 <pre className="overflow-x-auto">
+  {/*use the string formating that preserve the indentation of the code*/}
 {`def calculate_total(items):
     total = 0
     for item in items:
@@ -302,7 +304,7 @@ export default function Landing({ onNavigate }) {
             <span className="font-semibold text-white">AI Code Review System</span>
           </div>
           <p className="text-gray-500 text-sm">
-            Built by Abdulahi Oyebanji · Computer Science · AI & FullStack Focus
+            Built by Abdulahi Oyebanji · Computer Science · AI & FullStack
           </p>
         </div>
       </footer>
