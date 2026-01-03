@@ -2,9 +2,9 @@ import axios from "axios";
 
 // Use environment variable for backend URL, default to localhost for development
 const getApiBaseUrl = () => {
-  // For production (Vercel), use the Render backend URL from environment
-  if (import.meta.env.PROD || import.meta.env.VITE_BACKEND_URL) {
-    return import.meta.env.VITE_BACKEND_URL;
+  // For production (Vercel), use the Vercel API route
+  if (import.meta.env.PROD || import.meta.env.VITE_USE_VERCEL_API) {
+    return "/api";
   }
   // For development, use localhost
   return "http://localhost:8000";
