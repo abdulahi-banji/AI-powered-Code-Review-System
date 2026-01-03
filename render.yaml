@@ -1,0 +1,30 @@
+services:
+  # Backend API Service
+  - type: web
+    name: ai-code-review-api
+    env: python
+    repo: https://github.com/yourusername/ai-code-review-system
+    branch: main
+    pythonVersion: "3.11"
+    buildCommand: pip install -r api/requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        fromService: false
+        required: true
+
+  # Frontend Static Site
+  - type: web
+    name: ai-code-review-frontend
+    env: static
+    repo: https://github.com/yourusername/ai-code-review-system
+    branch: main
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        fromService:
+          name: ai-code-review-api
+          type: web
+          property: url
+

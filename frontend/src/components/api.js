@@ -1,11 +1,13 @@
 import axios from "axios";
 
-// Dynamic API URL - works both locally and on Vercel
+// Use environment variable for backend URL, default to localhost for development
 const getApiBaseUrl = () => {
-  if (import.meta.env.PROD) {
-    return "/api";
+  // For production (Vercel), use the Render backend URL from environment
+  if (import.meta.env.PROD || import.meta.env.VITE_BACKEND_URL) {
+    return import.meta.env.VITE_BACKEND_URL || "https://your-backend.onrender.com";
   }
-  return "http://localhost:8000/api";
+  // For development, use localhost
+  return "http://localhost:8000";
 };
 
 const API = axios.create({
