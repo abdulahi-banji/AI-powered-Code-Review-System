@@ -1,0 +1,21 @@
+# AI Code Review System - Dependencies
+
+# FastAPI Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# OpenAI Integration
+openai>=1.12.0
+
+# Data Validation
+pydantic>=2.5.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# File Upload Support
+python-multipart>=0.0.6
+
+# Database
+# sqlite3 is included in Python standard library
+
