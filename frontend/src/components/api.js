@@ -4,7 +4,7 @@ import axios from "axios";
 const getApiBaseUrl = () => {
   // For production (Vercel), use the Render backend URL from environment
   if (import.meta.env.PROD || import.meta.env.VITE_BACKEND_URL) {
-    return import.meta.env.VITE_BACKEND_URL || "https://your-backend.onrender.com";
+    return import.meta.env.VITE_BACKEND_URL;
   }
   // For development, use localhost
   return "http://localhost:8000";
