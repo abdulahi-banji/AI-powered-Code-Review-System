@@ -5,12 +5,12 @@ services:
     env: python
     repo: https://github.com/abdulahi-banji/AI-powered-Code-Review-System
     branch: main
-    pythonVersion: "3.11"
+    runtime: python-3.11
     buildCommand: pip install -r api/requirements.txt
     startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: OPENAI_API_KEY
-        fromService: false
+        value: ""
         required: true
 
   # Frontend Static Site
@@ -23,8 +23,5 @@ services:
     staticPublishPath: frontend/dist
     envVars:
       - key: VITE_BACKEND_URL
-        fromService:
-          name: ai-code-review-api
-          type: web
-          property: url
+        value: ""
 
