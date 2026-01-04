@@ -104,6 +104,8 @@ In the Vercel deployment screen:
 2. Wait for build and deployment (1-2 minutes)
 3. **Note your frontend URL**: `https://your-project-name.vercel.app`
 
+**Note**: Environment variables are NOT configured in `vercel.json`. You must add them in the Vercel dashboard during deployment or in the project settings after deployment.
+
 ---
 
 ## Step 4: Update CORS on Render

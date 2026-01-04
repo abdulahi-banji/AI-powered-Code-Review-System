@@ -1,11 +1,5 @@
 {
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist",
-  "framework": "vite",
-  "envVars": [
-    {
-      "key": "VITE_BACKEND_URL",
-      "value": "https://your-backend-url.onrender.com"
-    }
-  ]
+  "framework": "vite"
 }
