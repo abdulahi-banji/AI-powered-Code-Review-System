@@ -1,5 +1,5 @@
 services:
-  # Backend API Service
+  # Backend API Service - FastAPI on Render
   - type: web
     name: ai-code-review-api
     env: python
@@ -11,16 +11,13 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: OPENAI_API_KEY
-        value: ""
+        value: ""  # Set this in Render dashboard
+      - key: CORS_ORIGINS
+        value: "https://your-frontend.vercel.app"  # Replace with your Vercel URL
 
-  # Frontend Static Site
-  - type: web
-    name: ai-code-review-frontend
-    env: static
-    repo: https://github.com/abdulahi-banji/AI-powered-Code-Review-System
-    branch: main
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
-    envVars:
-      - key: VITE_BACKEND_URL
-        value: ""
+  # Frontend Static Site - DEPLOYED SEPARATELY ON VERCEL
+  # To deploy frontend to Vercel:
+  # 1. Go to vercel.com
+  # 2. Import this repository
+  # 3. Add environment variable: VITE_BACKEND_URL = https://ai-code-review-api.onrender.com
+  # 4. Deploy

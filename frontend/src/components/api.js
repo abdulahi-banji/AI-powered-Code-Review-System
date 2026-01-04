@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 // Get the backend URL from environment variable
-// For Render deployment, this will be set to the backend API URL
-// For local development, defaults to localhost
+// For Vercel deployment: uses VITE_BACKEND_URL from Render
+// For Render deployment: uses VITE_BACKEND_URL
+// For local development: defaults to localhost:8000
 const getApiBaseUrl = () => {
-  // Check if we're in production (Render)
+  // Check for custom backend URL (Render deployment)
   if (import.meta.env.VITE_BACKEND_URL) {
     return import.meta.env.VITE_BACKEND_URL;
   }
+  
   // Fallback to localhost for development
   return 'http://localhost:8000';
 };

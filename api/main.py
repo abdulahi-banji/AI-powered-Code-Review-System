@@ -17,9 +17,13 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 app = FastAPI(title="AI Code Review API")
 
+# Get CORS origins from environment variable
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*")
+allowed_origins = [origin.strip() for origin in CORS_ORIGINS.split(",")] if CORS_ORIGINS != "*" else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
