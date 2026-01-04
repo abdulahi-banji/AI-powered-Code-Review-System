@@ -1,0 +1,24 @@
+# Vercel ignore rules - Only deploy frontend
+
+# Ignore everything
+*
+
+# But NOT these files and directories
+!frontend/
+!vercel.json
+
+# Ignore Python files
+api/
+backend/
+*.py
+requirements.txt
+venv/
+.env
+
+# Ignore docs
+docs/
+
+# Ignore git
+.git/
+.gitignore
+
