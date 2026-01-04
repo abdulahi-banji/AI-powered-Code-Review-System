@@ -1,19 +1,14 @@
 # Vercel ignore rules - Only deploy frontend
+# Explicitly list files to ignore (don't use * as it removes frontend too)
 
-# Ignore everything
-*
-
-# But NOT these files and directories
-!frontend/
-!vercel.json
-
-# Ignore Python files
+# Ignore Python files and directories
 api/
 backend/
 *.py
 requirements.txt
 venv/
 .env
+.env.local
 
 # Ignore docs
 docs/
@@ -21,4 +16,15 @@ docs/
 # Ignore git
 .git/
 .gitignore
+README.md
+TODO.md
+DEPLOYMENT.md
+HYBRID_DEPLOYMENT.md
+VERCEL_DEPLOYMENT.md
+DEPLOYMENT_COMPLETE.md
+deploy-vercel.sh
+render.yaml
+
+# Keep frontend
+!frontend/
 
