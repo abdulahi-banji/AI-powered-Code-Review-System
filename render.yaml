@@ -11,9 +11,9 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: OPENAI_API_KEY
-        value: ""  # Set this in Render dashboard
+        value: ""  # Set your OpenAI API key in Render dashboard
       - key: CORS_ORIGINS
-        value: "https://your-frontend.vercel.app"  # Replace with your Vercel URL
+        value: "https://ai-powered-code-review-system-eight.vercel.app"  # Vercel frontend URL
 
   # Frontend Static Site - DEPLOYED SEPARATELY ON VERCEL
   # To deploy frontend to Vercel:
