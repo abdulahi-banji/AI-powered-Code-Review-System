@@ -14,10 +14,3 @@ services:
         value: ""  # Set your OpenAI API key in Render dashboard
       - key: CORS_ORIGINS
         value: "https://ai-powered-code-review-system-eight.vercel.app"  # Vercel frontend URL
-
-  # Frontend Static Site - DEPLOYED SEPARATELY ON VERCEL
-  # To deploy frontend to Vercel:
-  # 1. Go to vercel.com
-  # 2. Import this repository
-  # 3. Add environment variable: VITE_BACKEND_URL = https://ai-code-review-api.onrender.com
-  # 4. Deploy
