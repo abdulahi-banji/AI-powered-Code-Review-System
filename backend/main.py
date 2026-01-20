@@ -8,7 +8,7 @@ import json
 import os
 from datetime import datetime
 
-# -------------------- SETUP --------------------
+# SETUP
 
 load_dotenv()
 
@@ -28,7 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# -------------------- DATABASE --------------------
+# Database
 
 DB_NAME = "reviews.db"
 
@@ -51,13 +51,13 @@ def init_db():
 
 init_db()
 
-# -------------------- MODELS --------------------
+# Models
 
 class CodeReviewRequest(BaseModel):
     code_snippet: str
     language: str
 
-# -------------------- ROUTES --------------------
+# Routes
 
 @app.get("/")
 def root():
@@ -136,7 +136,7 @@ Code:
         result.setdefault("best_practices", [])
         result.setdefault("score", 70)
 
-        # -------------------- SAVE TO SQLITE --------------------
+        #  SAVE TO SQLITE
 
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()

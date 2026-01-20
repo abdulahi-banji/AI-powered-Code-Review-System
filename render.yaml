@@ -14,3 +14,7 @@ services:
         value: ""  # Set your OpenAI API key in Render dashboard
       - key: CORS_ORIGINS
         value: "https://ai-powered-code-review-system-eight.vercel.app"  # Vercel frontend URL
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8d4a919e (Updated the front-end on landing.jsx)
