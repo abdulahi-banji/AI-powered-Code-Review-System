@@ -192,7 +192,7 @@ export default function Landing() {
           <motion.div {...fadeInUp}>
             {/* Floating badge */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-800/80 border border-neutral-700 rounded-full mb-8 backdrop-blur-sm"
@@ -571,7 +571,7 @@ export default function Landing() {
             <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <span className="text-lg font-bold">CodeReview AI</span>
+            <span className="text-lg font-bold">CodeReview AI </span>
           </div>
           <p className="text-neutral-500 text-sm md:text-base text-center md:text-left">
             Built by <span className="text-white font-semibold">Abdulahi Oyebanji</span>, a software developer, aspiring AI engineer & CS student
