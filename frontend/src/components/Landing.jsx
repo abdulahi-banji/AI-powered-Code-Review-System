@@ -2,13 +2,9 @@ import { motion } from "framer-motion";
 import { Code, Bug, Gauge, ArrowRight, CheckCircle, Terminal, Cpu, Menu, X, Sparkles, Zap, Shield, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-export default function Landing() {
+export default function Landing({ onNavigate, onViewDocs }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('landing');
   const [showAllSuggestions, setShowAllSuggestions] = useState(false);
-
-  const onNavigate = () => setCurrentView('app');
-  const onViewDocs = () => setCurrentView('docs');
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -23,24 +19,6 @@ export default function Landing() {
       }
     }
   };
-
-  if (currentView !== 'landing') {
-    return (
-      <div className="min-h-screen bg-neutral-950 text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            {currentView === 'app' ? 'App View' : 'Documentation'}
-          </h1>
-          <button 
-            onClick={() => setCurrentView('landing')}
-            className="px-6 py-3 bg-teal-600 hover:bg-teal-700 rounded-lg font-medium transition-colors"
-          >
-            Back to Landing
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white overflow-x-hidden relative">
