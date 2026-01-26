@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Bug, Gauge, ArrowRight, CheckCircle, Terminal, Cpu, Menu, X, Sparkles, Zap, Shield, ChevronDown } from "lucide-react";
+import { Code, Bug, Gauge, ArrowRight, CheckCircle, Terminal, Cpu, Sparkles, Zap, Shield, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function Landing({ onNavigate, onViewDocs }) {
@@ -358,20 +358,20 @@ export default function Landing({ onNavigate, onViewDocs }) {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-12 md:mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 hover:border-purple-500/30 transition-all"
+              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-purple-500/30 transition-all"
             >
-              <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-teal-500/10 border border-teal-500/30 rounded-lg flex items-center justify-center">
-                  <Code className="w-4 h-4 md:w-5 md:h-5 text-teal-400" />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-teal-500/10 border border-teal-500/30 rounded-lg flex items-center justify-center">
+                  <Code className="w-5 h-5 text-teal-400" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold">Input Code</h3>
+                <h3 className="text-xl font-bold">Input Code</h3>
               </div>
-              <div className="bg-neutral-950/80 border border-white/5 rounded-lg md:rounded-xl p-3 md:p-6 font-mono text-xs md:text-sm text-neutral-300 overflow-x-auto">
+              <div className="bg-neutral-950/80 border border-white/5 rounded-xl p-6 font-mono text-sm text-neutral-300 overflow-x-auto">
                 <pre>{`def get_squares(numbers):
     result = []
     for i in range(len(numbers)):
@@ -384,41 +384,41 @@ export default function Landing({ onNavigate, onViewDocs }) {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 hover:border-teal-500/30 transition-all"
+              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-teal-500/30 transition-all"
             >
-              <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-purple-400" />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-purple-400" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold">AI Analysis</h3>
+                <h3 className="text-xl font-bold">AI Analysis</h3>
               </div>
-              <div className="space-y-4 md:space-y-6">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-emerald-400" />
-                  <span className="text-lg md:text-2xl font-bold text-emerald-400">Score: 65/100</span>
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-emerald-400" />
+                  <span className="text-2xl font-bold text-emerald-400">Score: 65/100</span>
                 </div>
-                <div className="pt-4 md:pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-2 mb-3 md:mb-4">
-                    <Zap className="w-4 h-4 md:w-5 md:h-5 text-orange-400" />
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Zap className="w-5 h-5 text-orange-400" />
                     <span className="font-bold text-orange-400">Suggestions</span>
                   </div>
                   
                   <div className="relative">
-                    <ul className="space-y-2 md:space-y-3 text-neutral-300">
-                      <li className="flex items-start gap-2 md:gap-3">
-                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 mt-0.5 text-teal-400 flex-shrink-0" />
-                        <span className="text-xs md:text-sm leading-relaxed">
+                    <ul className="space-y-3 text-neutral-300">
+                      <li className="flex items-start gap-3">
+                        <ArrowRight className="w-5 h-5 mt-0.5 text-teal-400 flex-shrink-0" />
+                        <span className="text-sm leading-relaxed">
                           Use a list comprehension (
-                          <code className="text-teal-300 bg-neutral-800 px-1 py-0.5 rounded">
+                          <code className="text-teal-300 bg-neutral-800 px-1.5 py-0.5 rounded">
                             [num ** 2 for num in numbers]
                           </code>
                           ) to reduce verbosity and improve clarity
                         </span>
                       </li>
-                      <li className="flex items-start gap-2 md:gap-3">
-                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 mt-0.5 text-teal-400 flex-shrink-0" />
-                        <span className="text-xs md:text-sm leading-relaxed">
-                          Avoid the <code className="text-teal-300 bg-neutral-800 px-1 py-0.5 rounded">
+                      <li className="flex items-start gap-3">
+                        <ArrowRight className="w-5 h-5 mt-0.5 text-teal-400 flex-shrink-0" />
+                        <span className="text-sm leading-relaxed">
+                          Avoid the <code className="text-teal-300 bg-neutral-800 px-1.5 py-0.5 rounded">
                             range(len())
                           </code> pattern; iterate directly over the list for more Pythonic code
                         </span>
@@ -437,25 +437,25 @@ export default function Landing({ onNavigate, onViewDocs }) {
                           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-900/50 to-neutral-900 pointer-events-none" />
                         )}
                         
-                        <li className="flex items-start gap-2 md:gap-3">
-                          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 mt-0.5 text-teal-400 flex-shrink-0" />
-                          <span className="text-xs md:text-sm leading-relaxed">
+                        <li className="flex items-start gap-3">
+                          <ArrowRight className="w-5 h-5 mt-0.5 text-teal-400 flex-shrink-0" />
+                          <span className="text-sm leading-relaxed">
                             Replace manual multiplication with the exponent operator (
-                            <code className="text-teal-300 bg-neutral-800 px-1 py-0.5 rounded">
+                            <code className="text-teal-300 bg-neutral-800 px-1.5 py-0.5 rounded">
                               num ** 2
                             </code>
                             ) for better readability
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 md:gap-3 mt-2 md:mt-3">
-                          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 mt-0.5 text-teal-400 flex-shrink-0" />
-                          <span className="text-xs md:text-sm leading-relaxed">
+                        <li className="flex items-start gap-3 mt-3">
+                          <ArrowRight className="w-5 h-5 mt-0.5 text-teal-400 flex-shrink-0" />
+                          <span className="text-sm leading-relaxed">
                             Add type hints to clarify expected input and output types
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 md:gap-3 mt-2 md:mt-3">
-                          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 mt-0.5 text-teal-400 flex-shrink-0" />
-                          <span className="text-xs md:text-sm leading-relaxed">
+                        <li className="flex items-start gap-3 mt-3">
+                          <ArrowRight className="w-5 h-5 mt-0.5 text-teal-400 flex-shrink-0" />
+                          <span className="text-sm leading-relaxed">
                             Include a short docstring to document the function's behavior and assumptions
                           </span>
                         </li>
@@ -466,10 +466,10 @@ export default function Landing({ onNavigate, onViewDocs }) {
                     {!showAllSuggestions && (
                       <button
                         onClick={() => setShowAllSuggestions(true)}
-                        className="mt-3 md:mt-4 w-full flex items-center justify-center gap-2 px-3 md:px-4 py-2 md:py-2.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded-lg text-xs md:text-sm font-medium text-neutral-300 hover:text-white transition-all"
+                        className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded-lg text-sm font-medium text-neutral-300 hover:text-white transition-all"
                       >
                         <span>Show 3 more suggestions</span>
-                        <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
+                        <ChevronDown className="w-4 h-4" />
                       </button>
                     )}
                   </div>
@@ -549,7 +549,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
             <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <span className="text-lg font-bold">CodeReview AI </span>
+            <span className="text-lg font-bold">CodeReview AI</span>
           </div>
           <p className="text-neutral-500 text-sm md:text-base text-center md:text-left">
             Built by <span className="text-white font-semibold">Abdulahi Oyebanji</span>, a software developer, aspiring AI engineer & CS student
