@@ -424,7 +424,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
                         </span>
                       </li>
                       
-                      {/* Collapsed suggestions with blur effect */}
+                      {/* Collapsed suggestions */}
                       <motion.div
                         initial={false}
                         animate={{ 
