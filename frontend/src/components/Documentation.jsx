@@ -209,7 +209,7 @@ export default function Docs({ onBack }) {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-teal-400 mt-1">•</span>
-              <span>Always review AI suggestions - the system assists but does not replace human judgment</span>
+              <span>Always review AI suggestions. Remember,the system assists but does not replace human judgment</span>
             </li>
           </ul>
         </motion.section>
