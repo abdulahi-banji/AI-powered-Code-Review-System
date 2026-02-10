@@ -160,7 +160,7 @@ export default function CodeReview({ onBack }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <button
             onClick={onBack}
-            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-teal-600/20 to-cyan-600/20 border border-teal-500/30 hover:border-teal-400/60 hover:from-teal-600/30 hover:to-cyan-600/30 text-teal-300 hover:text-teal-100 transition-all duration-300 font-medium text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20"
+            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600/20 border border-teal-500/30 hover:border-teal-400/60 hover:bg-teal-600/30 text-teal-300 hover:text-teal-100 transition-all duration-300 font-medium text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
             <span className="hidden sm:inline">Back to Home</span>
