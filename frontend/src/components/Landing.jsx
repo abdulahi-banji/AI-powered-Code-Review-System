@@ -668,7 +668,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
             <span className="text-lg font-bold">CodeReview AI</span>
           </div>
           <p className="text-neutral-500 text-sm md:text-base text-center md:text-left">
-            Built by <span className="text-white font-semibold">Abdulahi Oyebanji</span>, a software developer, aspiring AI engineer & CS student
+            Built by <span className="text-white font-semibold">Abdulahi Oyebanji</span>, a software developer, aspiring AI engineer, & CS student
           </p>
         </div>
       </footer>
