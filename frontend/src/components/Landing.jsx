@@ -1,21 +1,49 @@
 import { motion } from "framer-motion";
 import { Code, Bug, Gauge, ArrowRight, CheckCircle, Terminal, Cpu, Menu, X, Sparkles, Zap, Shield, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Landing({ onNavigate, onViewDocs }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showAllSuggestions, setShowAllSuggestions] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const fullText = 'Automated Code Review';
+
+  // Typewriter animation effect
+  useEffect(() => {
+    const typingSpeed = 80;
+    const deletingSpeed = 50;
+    const delayBetweenCycles = 2000;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < fullText.length) {
+          setDisplayText(fullText.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), delayBetweenCycles);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting]);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
   };
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.12
+        staggerChildren: 0.15
       }
     }
   };
@@ -92,7 +120,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
                   closed: { rotate: 0, y: 0 },
                   open: { rotate: 45, y: 6 }
                 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute w-5 h-0.5 bg-current"
                 style={{ top: '6px' }}
               />
@@ -101,7 +129,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
                   closed: { opacity: 1 },
                   open: { opacity: 0 }
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.25 }}
                 className="absolute w-5 h-0.5 bg-current"
                 style={{ top: '11px' }}
               />
@@ -110,7 +138,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
                   closed: { rotate: 0, y: 0 },
                   open: { rotate: -45, y: -6 }
                 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute w-5 h-0.5 bg-current"
                 style={{ top: '16px' }}
               />
@@ -185,11 +213,18 @@ export default function Landing({ onNavigate, onViewDocs }) {
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.9 }}
               className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight"
             >
-              <span className="text-white">
-                Automated Code Review
+              <span className="block font-mono tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 min-h-[1.2em] flex items-center">
+                {displayText}
+                <motion.span 
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.6, repeat: Infinity }}
+                  className="text-teal-400"
+                >
+                  |
+                </motion.span>
               </span>
               <br />
               <span className="text-teal-400">
@@ -239,7 +274,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
               className="grid grid-cols-3 gap-8 pt-12 border-t border-white/5"
             >
               {[
-                { value: "50+", label: "Languages", icon: Shield },
+                { value: "50+", label: "Test cases", icon: Shield },
                 { value: "40%", label: "Faster", icon: Zap },
                 { value: "25%", label: "Fewer Bugs", icon: Bug }
               ].map((stat, i) => (
@@ -281,12 +316,21 @@ export default function Landing({ onNavigate, onViewDocs }) {
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
           >
             {/* Bug Detection Card - Rose Theme */}
             <motion.div
-              variants={fadeInUp}
+              variants={{
+                initial: { opacity: 0, y: 30, scale: 0.95 },
+                animate: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1,
+                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                }
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-rose-500/20 via-rose-600/10 to-rose-900/5 p-8 rounded-2xl border-2 border-rose-500/40 backdrop-blur-sm shadow-lg shadow-rose-500/10"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-rose-500/20 border-2 border-rose-400/50 rounded-xl mb-6 shadow-inner">
@@ -304,7 +348,16 @@ export default function Landing({ onNavigate, onViewDocs }) {
 
             {/* Quality Scoring Card - Orange Theme */}
             <motion.div
-              variants={fadeInUp}
+              variants={{
+                initial: { opacity: 0, y: 30, scale: 0.95 },
+                animate: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1,
+                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                }
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-orange-900/5 p-8 rounded-2xl border-2 border-orange-500/40 backdrop-blur-sm shadow-lg shadow-orange-500/10"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 border-2 border-orange-400/50 rounded-xl mb-6 shadow-inner">
@@ -322,7 +375,16 @@ export default function Landing({ onNavigate, onViewDocs }) {
 
             {/* AI Optimization Card - Purple Theme */}
             <motion.div
-              variants={fadeInUp}
+              variants={{
+                initial: { opacity: 0, y: 30, scale: 0.95 },
+                animate: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1,
+                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                }
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-purple-500/20 via-purple-600/10 to-purple-900/5 p-8 rounded-2xl border-2 border-purple-500/40 backdrop-blur-sm shadow-lg shadow-purple-500/10"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/20 border-2 border-purple-400/50 rounded-xl mb-6 shadow-inner">
@@ -360,9 +422,11 @@ export default function Landing({ onNavigate, onViewDocs }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-12 md:mb-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 hover:border-purple-500/30 transition-all"
             >
               <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
@@ -381,9 +445,11 @@ export default function Landing({ onNavigate, onViewDocs }) {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 hover:border-teal-500/30 transition-all"
             >
               <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">

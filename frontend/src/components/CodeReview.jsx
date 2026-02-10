@@ -212,13 +212,13 @@ export default function CodeReview({ onBack }) {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <FileCode className="w-5 h-5 text-teal-400" />
-                    <h2 className="text-base sm:text-lg font-semibold text-white">Your Code</h2>
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white">Your Code</h2>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={copyCode}
-                    className="px-2 py-1.5 rounded-lg bg-neutral-700/50 hover:bg-neutral-700 border border-white/10 transition-all text-xs flex items-center gap-1.5"
+                    className="px-2 py-1.5 rounded-lg bg-neutral-700/50 hover:bg-neutral-700 border border-white/10 transition-all text-sm sm:text-base flex items-center gap-1.5"
                   >
                     {copied ? (
                       <>
@@ -238,7 +238,7 @@ export default function CodeReview({ onBack }) {
                     value={language}
                     onChange={(e) => { setLanguage(e.target.value); setUploadedFile(null); }}
                     whileFocus={{ borderColor: "rgb(45, 212, 191)" }}
-                    className="bg-neutral-950 border border-white/10 rounded-lg text-xs sm:text-sm px-3 py-2 text-white focus:outline-none focus:border-teal-500/50"
+                    className="bg-neutral-950 border border-white/10 rounded-lg text-sm sm:text-base px-3 py-2 text-white focus:outline-none focus:border-teal-500/50"
                   >
                     <option value="python">Python</option>
                     <option value="javascript">JavaScript</option>
@@ -280,7 +280,7 @@ export default function CodeReview({ onBack }) {
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   placeholder={`// Paste your ${language} code here..`}
-                  className="w-full h-64 sm:h-80 md:h-96 bg-neutral-950 border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 text-xs sm:text-sm font-mono text-white resize-none focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all"
+                  className="w-full h-64 sm:h-80 md:h-96 bg-neutral-950 border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 text-sm sm:text-base font-mono text-white resize-none focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   spellCheck="false"
                 />
 
@@ -291,7 +291,7 @@ export default function CodeReview({ onBack }) {
                     disabled={loading || !code.trim()}
                     whileHover={{ scale: (loading || !code.trim()) ? 1 : 1.02, boxShadow: (loading || !code.trim()) ? "0 10px 15px -3px rgba(0, 0, 0, 0.1)" : "0 20px 25px -5px rgba(45, 212, 191, 0.3)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-teal-600 hover:bg-teal-700 disabled:hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-sm relative overflow-hidden group"
+                    className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-teal-600 hover:bg-teal-700 disabled:hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base relative overflow-hidden group"
                   >
                     {/* Animated background pulse */}
                     {!loading && code.trim() && (
@@ -376,8 +376,8 @@ export default function CodeReview({ onBack }) {
                       <div className="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mb-4">
                         <Code className="w-8 h-8 text-teal-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Ready to Analyze</h3>
-                      <p className="text-sm text-neutral-400 max-w-sm leading-relaxed">
+                      <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">Ready to Analyze</h3>
+                      <p className="text-base sm:text-lg text-neutral-400 max-w-sm leading-relaxed">
                         Enter your code or upload a file and click Analyze to receive AI-powered feedback
                       </p>
                     </motion.div>
@@ -389,8 +389,8 @@ export default function CodeReview({ onBack }) {
                       className="h-full flex flex-col items-center justify-center"
                     >
                       <Loader2 className="w-12 h-12 text-teal-400 animate-spin mb-4" />
-                      <p className="text-base font-medium text-white mb-1">Analyzing your code</p>
-                      <p className="text-sm text-neutral-400">This may take a few seconds</p>
+                      <p className="text-lg sm:text-xl font-medium text-white mb-2">Analyzing your code</p>
+                      <p className="text-base text-neutral-400">This may take a few seconds</p>
                     </motion.div>
                   )}
 
@@ -404,12 +404,12 @@ export default function CodeReview({ onBack }) {
                         className="bg-neutral-800/50 border border-teal-500/20 rounded-xl p-4 sm:p-5 hover:border-teal-500/40 transition-all"
                       >
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-neutral-400 font-medium text-xs sm:text-sm">Code Quality Score</span>
+                          <span className="text-neutral-400 font-medium text-sm sm:text-base">Code Quality Score</span>
                           <motion.span
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-                            className={`text-3xl sm:text-4xl font-semibold ${getScoreColor(result.score)}`}
+                            className={`text-4xl sm:text-5xl font-semibold ${getScoreColor(result.score)}`}
                           >
                             {result.score}/100
                           </motion.span>
@@ -422,7 +422,7 @@ export default function CodeReview({ onBack }) {
                             className={`h-full ${getScoreBg(result.score)}`}
                           />
                         </div>
-                        <p className="text-xs text-neutral-500 mt-2">
+                        <p className="text-sm text-neutral-500 mt-3">
                           Based on maintainability, clarity, and best practices
                         </p>
                       </motion.div>
@@ -434,7 +434,7 @@ export default function CodeReview({ onBack }) {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.25, duration: 0.4 }}
                         >
-                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                          <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center gap-2 text-white">
                             <Bug className="w-5 h-5 text-red-400" />
                             Bugs Found ({result.bugs.length})
                           </h3>
@@ -449,17 +449,17 @@ export default function CodeReview({ onBack }) {
                                 className={`rounded-lg sm:rounded-xl p-3 sm:p-4 border ${getSeverityColor(bug.severity)} transition-all cursor-pointer`}
                               >
                                 <div className="flex items-start justify-between mb-2">
-                                  <span className="text-xs font-semibold uppercase">
+                                  <span className="text-sm font-semibold uppercase">
                                     {bug.severity} Severity
                                   </span>
                                   {bug.line && (
-                                    <span className="text-xs text-neutral-500">Line {bug.line}</span>
+                                    <span className="text-sm text-neutral-500">Line {bug.line}</span>
                                   )}
                                 </div>
-                                <p className="text-xs sm:text-sm text-white mb-2">{bug.description}</p>
+                                <p className="text-sm sm:text-base text-white mb-2">{bug.description}</p>
                                 {bug.suggestion && (
                                   <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
-                                    <p className="text-xs text-neutral-300">
+                                    <p className="text-sm text-neutral-300">
                                       <span className="text-teal-400 font-medium">Fix: </span>
                                       {bug.suggestion}
                                     </p>
@@ -478,7 +478,7 @@ export default function CodeReview({ onBack }) {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4, duration: 0.4 }}
                         >
-                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                          <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center gap-2 text-white">
                             <TrendingUp className="w-5 h-5 text-orange-400" />
                             Optimizations ({result.optimizations.length})
                           </h3>
@@ -493,17 +493,17 @@ export default function CodeReview({ onBack }) {
                                 className="rounded-lg sm:rounded-xl p-3 sm:p-4 border border-orange-500/30 bg-orange-500/5 transition-all cursor-pointer"
                               >
                                 <div className="flex items-start justify-between mb-2">
-                                  <span className="text-xs font-semibold text-orange-400 uppercase">
+                                  <span className="text-sm font-semibold text-orange-400 uppercase">
                                     {opt.type || 'Performance'}
                                   </span>
                                   {opt.line && (
-                                    <span className="text-xs text-neutral-500">Line {opt.line}</span>
+                                    <span className="text-sm text-neutral-500">Line {opt.line}</span>
                                   )}
                                 </div>
-                                <p className="text-xs sm:text-sm text-white mb-2">{opt.description}</p>
+                                <p className="text-sm sm:text-base text-white mb-2">{opt.description}</p>
                                 {opt.suggestion && (
                                   <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
-                                    <p className="text-xs text-neutral-300">
+                                    <p className="text-sm text-neutral-300">
                                       <span className="text-orange-400 font-medium">Suggestion: </span>
                                       {opt.suggestion}
                                     </p>
@@ -522,7 +522,7 @@ export default function CodeReview({ onBack }) {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.55, duration: 0.4 }}
                         >
-                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                          <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center gap-2 text-white">
                             <CheckCircle className="w-5 h-5 text-emerald-400" />
                             Best Practices ({result.best_practices.length})
                           </h3>
@@ -539,10 +539,10 @@ export default function CodeReview({ onBack }) {
                                 <div className="flex items-start gap-3">
                                   <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                                   <div>
-                                    <p className="text-xs font-medium text-emerald-400 uppercase mb-1">
+                                    <p className="text-sm font-medium text-emerald-400 uppercase mb-1">
                                       {practice.category || 'General'}
                                     </p>
-                                    <p className="text-xs sm:text-sm text-white">{practice.description}</p>
+                                    <p className="text-sm sm:text-base text-white">{practice.description}</p>
                                   </div>
                                 </div>
                               </motion.div>
