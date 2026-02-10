@@ -7,10 +7,25 @@ export default function Landing({ onNavigate, onViewDocs }) {
   const [showAllSuggestions, setShowAllSuggestions] = useState(false);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const fullText = 'Automated Code Review';
 
-  // Typewriter animation effect
+  // Detect screen size
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Typewriter animation effect (only on desktop)
+  useEffect(() => {
+    if (isMobile) {
+      setDisplayText(fullText);
+      return;
+    }
+
     const typingSpeed = 150;
     const deletingSpeed = 100;
     const delayBetweenCycles = 2000;
@@ -32,7 +47,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
     }, isDeleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting]);
+  }, [displayText, isDeleting, isMobile]);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -216,22 +231,34 @@ export default function Landing({ onNavigate, onViewDocs }) {
               transition={{ delay: 0.3, duration: 0.9 }}
               className="flex flex-col gap-6 mb-6"
             >
-              <div className="flex items-center justify-center gap-1">
+              {/* Desktop: Animated typewriter */}
+              {!isMobile && (
+                <div className="flex items-center justify-center gap-1">
+                  <span 
+                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 whitespace-nowrap"
+                    style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
+                  >
+                    {displayText}
+                  </span>
+                  <motion.span 
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.6, repeat: Infinity }}
+                    className="text-teal-400 inline-block"
+                    style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
+                  >
+                    |
+                  </motion.span>
+                </div>
+              )}
+              
+              {/* Mobile: Static text */}
+              {isMobile && (
                 <span 
-                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 whitespace-nowrap"
-                  style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 text-2xl sm:text-3xl md:text-4xl font-bold leading-tight break-words"
                 >
-                  {displayText}
+                  Automated Code Review
                 </span>
-                <motion.span 
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.6, repeat: Infinity }}
-                  className="text-teal-400 inline-block"
-                  style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
-                >
-                  |
-                </motion.span>
-              </div>
+              )}
               <span className="text-teal-400 text-5xl sm:text-6xl md:text-7xl font-bold">
                 Powered by AI
               </span>
@@ -338,8 +365,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-rose-500/20 via-rose-600/10 to-rose-900/5 p-8 rounded-2xl border-2 border-rose-500/40 backdrop-blur-sm shadow-lg shadow-rose-500/10"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-rose-500/20 border-2 border-rose-400/50 rounded-xl mb-6 shadow-inner">
-                <Bug className="w-10 h-10 text-rose-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-rose-500/20 border-2 border-rose-400/50 rounded-xl mb-6 shadow-inner">
+                <Bug className="w-14 h-14 text-rose-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-rose-100">
@@ -365,8 +392,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-orange-900/5 p-8 rounded-2xl border-2 border-orange-500/40 backdrop-blur-sm shadow-lg shadow-orange-500/10"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 border-2 border-orange-400/50 rounded-xl mb-6 shadow-inner">
-                <Gauge className="w-10 h-10 text-orange-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-orange-500/20 border-2 border-orange-400/50 rounded-xl mb-6 shadow-inner">
+                <Gauge className="w-14 h-14 text-orange-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-orange-100">
@@ -392,8 +419,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-purple-500/20 via-purple-600/10 to-purple-900/5 p-8 rounded-2xl border-2 border-purple-500/40 backdrop-blur-sm shadow-lg shadow-purple-500/10"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/20 border-2 border-purple-400/50 rounded-xl mb-6 shadow-inner">
-                <Cpu className="w-10 h-10 text-purple-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-purple-500/20 border-2 border-purple-400/50 rounded-xl mb-6 shadow-inner">
+                <Cpu className="w-14 h-14 text-purple-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-purple-100">
