@@ -11,8 +11,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
 
   // Typewriter animation effect
   useEffect(() => {
-    const typingSpeed = 80;
-    const deletingSpeed = 50;
+    const typingSpeed = 150;
+    const deletingSpeed = 100;
     const delayBetweenCycles = 2000;
 
     const timer = setTimeout(() => {
@@ -214,20 +214,25 @@ export default function Landing({ onNavigate, onViewDocs }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.9 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight"
+              className="flex flex-col gap-6 mb-6"
             >
-              <span className="block font-mono tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 min-h-[1.2em] flex items-center">
-                {displayText}
+              <div className="flex items-center justify-center gap-1">
+                <span 
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 whitespace-nowrap"
+                  style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
+                >
+                  {displayText}
+                </span>
                 <motion.span 
                   animate={{ opacity: [1, 0] }}
                   transition={{ duration: 0.6, repeat: Infinity }}
-                  className="text-teal-400"
+                  className="text-teal-400 inline-block"
+                  style={{ fontFamily: "'Press Start 2P', cursive", fontSize: 'clamp(1.5rem, 5vw, 3rem)' }}
                 >
                   |
                 </motion.span>
-              </span>
-              <br />
-              <span className="text-teal-400">
+              </div>
+              <span className="text-teal-400 text-5xl sm:text-6xl md:text-7xl font-bold">
                 Powered by AI
               </span>
             </motion.h1>
