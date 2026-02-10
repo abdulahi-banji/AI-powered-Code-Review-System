@@ -157,62 +157,66 @@ export default function CodeReview({ onBack }) {
 
       {/* Header */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-          <button
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between">
+          <motion.button
             onClick={onBack}
-            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600/20 border border-teal-500/30 hover:border-teal-400/60 hover:bg-teal-600/30 text-teal-300 hover:text-teal-100 transition-all duration-300 font-medium text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-teal-600/20 border border-teal-500/30 hover:border-teal-400/60 hover:bg-teal-600/30 text-teal-300 hover:text-teal-100 transition-all duration-300 font-medium text-xs sm:text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 cursor-pointer"
           >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform duration-300" />
             <span className="hidden sm:inline">Back to Home</span>
-          </button>
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center shadow-lg shadow-teal-500/30">
-              <Code className="w-5 h-5 text-white" />
+          </motion.button>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-teal-600 rounded-lg flex items-center justify-center shadow-lg shadow-teal-500/30">
+              <Code className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <span className="text-lg font-semibold text-white">Code Analyzer</span>
+            <span className="text-sm sm:text-lg font-semibold text-white">Code Analyzer</span>
           </div>
-          <div className="w-20 sm:w-24" />
+          <div className="w-16 sm:w-20 sm:w-24" />
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="pt-20 pb-12 px-4 sm:px-6 relative z-10">
+      <div className="pt-16 sm:pt-20 pb-8 sm:pb-12 px-3 sm:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-8"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-neutral-800/80 border border-neutral-700 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-neutral-800/80 border border-neutral-700 rounded-full mb-3 sm:mb-4">
               <div className="w-1.5 h-1.5 bg-teal-400 rounded-full" />
               <span className="text-xs font-medium text-neutral-300">GPT-4 Powered Analysis</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-semibold mb-2 text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2 text-white">
               Analyze Your Code
             </h1>
-            <p className="text-neutral-400 text-sm sm:text-base">
+            <p className="text-neutral-400 text-xs sm:text-sm md:text-base">
               Get instant AI-powered feedback on quality, bugs, and optimizations
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Input Section */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4 }}
-              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-neutral-800/50 border-b border-white/10 p-5">
+              <div className="bg-neutral-800/50 border-b border-white/10 p-4 sm:p-5">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <FileCode className="w-5 h-5 text-teal-400" />
-                    <h2 className="text-lg font-semibold text-white">Your Code</h2>
+                    <h2 className="text-base sm:text-lg font-semibold text-white">Your Code</h2>
                   </div>
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={copyCode}
                     className="px-2 py-1.5 rounded-lg bg-neutral-700/50 hover:bg-neutral-700 border border-white/10 transition-all text-xs flex items-center gap-1.5"
                   >
@@ -227,24 +231,23 @@ export default function CodeReview({ onBack }) {
                         <span className="hidden sm:inline">Copy</span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </div>
-                
-                {/* Language + Upload + Example */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <select
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <motion.select
                     value={language}
                     onChange={(e) => { setLanguage(e.target.value); setUploadedFile(null); }}
-                    className="bg-neutral-950 border border-white/10 rounded-lg text-sm px-3 py-2 text-white focus:outline-none focus:border-teal-500/50"
+                    whileFocus={{ borderColor: "rgb(45, 212, 191)" }}
+                    className="bg-neutral-950 border border-white/10 rounded-lg text-xs sm:text-sm px-3 py-2 text-white focus:outline-none focus:border-teal-500/50"
                   >
                     <option value="python">Python</option>
                     <option value="javascript">JavaScript</option>
                     <option value="java">Java</option>
                     <option value="cpp">C++</option>
-                  </select>
+                  </motion.select>
 
-                  <label className="px-2 py-2 rounded-lg bg-neutral-700/50 hover:bg-neutral-700 border border-white/10 transition-all cursor-pointer">
-                    <Upload className="w-4.5 h-4.5 text-teal-400" />
+                  <label className="px-2 py-2 rounded-lg bg-neutral-700/50 hover:bg-neutral-700 border border-white/10 transition-all cursor-pointer hover:border-teal-500/50">
+                    <Upload className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-teal-400" />
                     <input
                       type="file"
                       accept={languageFileTypes[language]}
@@ -253,60 +256,80 @@ export default function CodeReview({ onBack }) {
                     />
                   </label>
 
-                  <span className="text-xs text-neutral-500">
-                    {uploadedFile ? uploadedFile.name : "No file chosen"}
+                  <span className="text-xs text-neutral-500 truncate">
+                    {uploadedFile ? uploadedFile.name : "No file"}
                   </span>
 
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={loadExample}
-                    className="text-xs text-teal-400 hover:text-teal-300 transition-colors px-3 py-2 rounded-md hover:bg-neutral-800"
+                    className="text-xs text-teal-400 hover:text-teal-300 transition-colors px-2 sm:px-3 py-2 rounded-md hover:bg-neutral-800"
                   >
-                    Load Example
-                  </button>
+                    Example
+                  </motion.button>
                 </div>
               </div>
 
               {/* Code Editor */}
-              <div className="p-5">
-                <textarea
+              <div className="p-4 sm:p-5">
+                <motion.textarea
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   placeholder={`// Paste your ${language} code here..`}
-                  className="w-full h-80 sm:h-96 bg-neutral-950 border border-white/10 rounded-xl p-4 text-sm font-mono text-white resize-none focus:outline-none focus:border-teal-500/50"
+                  className="w-full h-64 sm:h-80 md:h-96 bg-neutral-950 border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 text-xs sm:text-sm font-mono text-white resize-none focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   spellCheck="false"
                 />
 
                 {/* Action Buttons */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                  <button
+                <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  <motion.button
                     onClick={analyzeCode}
                     disabled={loading || !code.trim()}
-                    className="flex-1 px-6 py-3 bg-teal-600 hover:bg-teal-700 rounded-lg font-semibold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm"
+                    whileHover={{ scale: (loading || !code.trim()) ? 1 : 1.02, boxShadow: (loading || !code.trim()) ? "0 10px 15px -3px rgba(0, 0, 0, 0.1)" : "0 20px 25px -5px rgba(45, 212, 191, 0.3)" }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-teal-600 hover:bg-teal-700 disabled:hover:bg-teal-600 rounded-lg font-semibold shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-sm relative overflow-hidden group"
                   >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Analyzing...
-                      </>
-                    ) : (
-                      <>
-                        <Code className="w-5 h-5" />
-                        Analyze Code
-                        <Send className="w-4 h-4" />
-                      </>
+                    {/* Animated background pulse */}
+                    {!loading && code.trim() && (
+                      <motion.div
+                        className="absolute inset-0 bg-teal-400/20 rounded-lg"
+                        animate={{ opacity: [0, 0.5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
                     )}
-                  </button>
-                  <button
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                          <span className="hidden xs:inline">Analyzing...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Code className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span className="hidden xs:inline">Analyze Code</span>
+                          <span className="xs:hidden">Analyze</span>
+                          <Send className="w-3 h-3 sm:w-4 sm:h-4 hidden sm:inline" />
+                        </>
+                      )}
+                    </span>
+                  </motion.button>
+                  <motion.button
                     onClick={() => {
                       setCode('');
                       setResult(null);
                       setError(null);
                       setUploadedFile(null);
                     }}
-                    className="px-6 py-3 bg-neutral-800 hover:bg-neutral-700 border border-white/10 rounded-lg font-semibold transition-all text-sm"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 bg-neutral-800 hover:bg-neutral-700 border border-white/10 rounded-lg font-semibold transition-all text-xs sm:text-sm"
                   >
                     Clear
-                  </button>
+                  </motion.button>
                 </div>
 
                 {/* Error Display */}
@@ -374,41 +397,56 @@ export default function CodeReview({ onBack }) {
                   {result && (
                     <motion.div {...fadeIn} className="space-y-6">
                       {/* Quality Score */}
-                      <div className="bg-neutral-800/50 border border-teal-500/20 rounded-xl p-5">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                        className="bg-neutral-800/50 border border-teal-500/20 rounded-xl p-4 sm:p-5 hover:border-teal-500/40 transition-all"
+                      >
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-neutral-400 font-medium text-sm">Code Quality Score</span>
-                          <span className={`text-4xl font-semibold ${getScoreColor(result.score)}`}>
+                          <span className="text-neutral-400 font-medium text-xs sm:text-sm">Code Quality Score</span>
+                          <motion.span
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
+                            className={`text-3xl sm:text-4xl font-semibold ${getScoreColor(result.score)}`}
+                          >
                             {result.score}/100
-                          </span>
+                          </motion.span>
                         </div>
                         <div className="w-full bg-neutral-700 rounded-full h-2 overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${result.score}%` }}
-                            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                            transition={{ duration: 1, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
                             className={`h-full ${getScoreBg(result.score)}`}
                           />
                         </div>
                         <p className="text-xs text-neutral-500 mt-2">
                           Based on maintainability, clarity, and best practices
                         </p>
-                      </div>
+                      </motion.div>
 
                       {/* Bugs */}
                       {result.bugs && result.bugs.length > 0 && (
-                        <div>
-                          <h3 className="text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.25, duration: 0.4 }}
+                        >
+                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
                             <Bug className="w-5 h-5 text-red-400" />
                             Bugs Found ({result.bugs.length})
                           </h3>
-                          <div className="space-y-3">
+                          <div className="space-y-2 sm:space-y-3">
                             {result.bugs.map((bug, idx) => (
                               <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: idx * 0.05, duration: 0.2 }}
-                                className={`rounded-xl p-4 border ${getSeverityColor(bug.severity)}`}
+                                transition={{ delay: 0.25 + idx * 0.05, duration: 0.3 }}
+                                whileHover={{ scale: 1.02, translateX: 4 }}
+                                className={`rounded-lg sm:rounded-xl p-3 sm:p-4 border ${getSeverityColor(bug.severity)} transition-all cursor-pointer`}
                               >
                                 <div className="flex items-start justify-between mb-2">
                                   <span className="text-xs font-semibold uppercase">
@@ -418,9 +456,9 @@ export default function CodeReview({ onBack }) {
                                     <span className="text-xs text-neutral-500">Line {bug.line}</span>
                                   )}
                                 </div>
-                                <p className="text-sm text-white mb-2">{bug.description}</p>
+                                <p className="text-xs sm:text-sm text-white mb-2">{bug.description}</p>
                                 {bug.suggestion && (
-                                  <div className="mt-3 pt-3 border-t border-white/10">
+                                  <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
                                     <p className="text-xs text-neutral-300">
                                       <span className="text-teal-400 font-medium">Fix: </span>
                                       {bug.suggestion}
@@ -430,24 +468,29 @@ export default function CodeReview({ onBack }) {
                               </motion.div>
                             ))}
                           </div>
-                        </div>
+                        </motion.div>
                       )}
 
                       {/* Optimizations */}
                       {result.optimizations && result.optimizations.length > 0 && (
-                        <div>
-                          <h3 className="text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4, duration: 0.4 }}
+                        >
+                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
                             <TrendingUp className="w-5 h-5 text-orange-400" />
                             Optimizations ({result.optimizations.length})
                           </h3>
-                          <div className="space-y-3">
+                          <div className="space-y-2 sm:space-y-3">
                             {result.optimizations.map((opt, idx) => (
                               <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: idx * 0.05, duration: 0.2 }}
-                                className="rounded-xl p-4 border border-orange-500/30 bg-orange-500/5"
+                                transition={{ delay: 0.4 + idx * 0.05, duration: 0.3 }}
+                                whileHover={{ scale: 1.02, translateX: 4 }}
+                                className="rounded-lg sm:rounded-xl p-3 sm:p-4 border border-orange-500/30 bg-orange-500/5 transition-all cursor-pointer"
                               >
                                 <div className="flex items-start justify-between mb-2">
                                   <span className="text-xs font-semibold text-orange-400 uppercase">
@@ -457,9 +500,9 @@ export default function CodeReview({ onBack }) {
                                     <span className="text-xs text-neutral-500">Line {opt.line}</span>
                                   )}
                                 </div>
-                                <p className="text-sm text-white mb-2">{opt.description}</p>
+                                <p className="text-xs sm:text-sm text-white mb-2">{opt.description}</p>
                                 {opt.suggestion && (
-                                  <div className="mt-3 pt-3 border-t border-white/10">
+                                  <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
                                     <p className="text-xs text-neutral-300">
                                       <span className="text-orange-400 font-medium">Suggestion: </span>
                                       {opt.suggestion}
@@ -469,38 +512,43 @@ export default function CodeReview({ onBack }) {
                               </motion.div>
                             ))}
                           </div>
-                        </div>
+                        </motion.div>
                       )}
 
                       {/* Best Practices */}
                       {result.best_practices && result.best_practices.length > 0 && (
-                        <div>
-                          <h3 className="text-base font-semibold mb-3 flex items-center gap-2 text-white">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.55, duration: 0.4 }}
+                        >
+                          <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2 text-white">
                             <CheckCircle className="w-5 h-5 text-emerald-400" />
                             Best Practices ({result.best_practices.length})
                           </h3>
-                          <div className="space-y-3">
+                          <div className="space-y-2 sm:space-y-3">
                             {result.best_practices.map((practice, idx) => (
                               <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: idx * 0.05, duration: 0.2 }}
-                                className="rounded-xl p-4 border border-emerald-500/30 bg-emerald-500/5"
+                                transition={{ delay: 0.55 + idx * 0.05, duration: 0.3 }}
+                                whileHover={{ scale: 1.02, translateX: 4 }}
+                                className="rounded-lg sm:rounded-xl p-3 sm:p-4 border border-emerald-500/30 bg-emerald-500/5 transition-all cursor-pointer"
                               >
                                 <div className="flex items-start gap-3">
-                                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                                   <div>
                                     <p className="text-xs font-medium text-emerald-400 uppercase mb-1">
                                       {practice.category || 'General'}
                                     </p>
-                                    <p className="text-sm text-white">{practice.description}</p>
+                                    <p className="text-xs sm:text-sm text-white">{practice.description}</p>
                                   </div>
                                 </div>
                               </motion.div>
                             ))}
                           </div>
-                        </div>
+                        </motion.div>
                       )}
                     </motion.div>
                   )}
