@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Code, Bug, Gauge, ArrowRight, CheckCircle, Terminal, Cpu, Menu, X, Sparkles, Zap, Shield, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 export default function Landing({ onNavigate, onViewDocs }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,6 +64,19 @@ export default function Landing({ onNavigate, onViewDocs }) {
     }
   };
 
+  // Smooth scroll to section
+  const smoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-white overflow-x-hidden relative">
       {/* Subtle radial glow with teal/ocean tones */}
@@ -91,9 +105,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
-              <Code className="w-5 h-5 text-white" strokeWidth={2.5} />
-            </div>
+            <Logo className="w-10 h-10" />
             <span className="text-xl font-bold text-white">
               CodeReview AI
             </span>
@@ -101,10 +113,18 @@ export default function Landing({ onNavigate, onViewDocs }) {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-neutral-400 hover:text-white transition-colors font-medium">
+            <a 
+              href="#features" 
+              onClick={(e) => smoothScroll(e, '#features')}
+              className="text-neutral-400 hover:text-white transition-colors font-medium cursor-pointer"
+            >
               Features
             </a>
-            <a href="#demo" className="text-neutral-400 hover:text-white transition-colors font-medium">
+            <a 
+              href="#demo" 
+              onClick={(e) => smoothScroll(e, '#demo')}
+              className="text-neutral-400 hover:text-white transition-colors font-medium cursor-pointer"
+            >
               Demo
             </a>
             <button 
@@ -172,15 +192,15 @@ export default function Landing({ onNavigate, onViewDocs }) {
             <div className="px-6 py-6 space-y-4">
               <a 
                 href="#features" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-neutral-400 hover:text-white transition-colors font-medium"
+                onClick={(e) => smoothScroll(e, '#features')}
+                className="block text-neutral-400 hover:text-white transition-colors font-medium cursor-pointer"
               >
                 Features
               </a>
               <a 
                 href="#demo" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-neutral-400 hover:text-white transition-colors font-medium"
+                onClick={(e) => smoothScroll(e, '#demo')}
+                className="block text-neutral-400 hover:text-white transition-colors font-medium cursor-pointer"
               >
                 Demo
               </a>
@@ -311,8 +331,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
                 { value: "25%", label: "Fewer Bugs", icon: Bug }
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="inline-flex items-center justify-center w-11 h-11 mb-3 bg-neutral-800 border border-neutral-700 rounded-lg">
-                    <stat.icon className="w-5 h-5 text-teal-400" strokeWidth={2} />
+                  <div className="inline-flex items-center justify-center w-16 h-16 mb-3 bg-neutral-800 border border-neutral-700 rounded-lg">
+                    <stat.icon className="w-8 h-8 text-teal-400" strokeWidth={2} />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1.5">
                     {stat.value}
@@ -365,8 +385,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-rose-500/20 via-rose-600/10 to-rose-900/5 p-8 rounded-2xl border-2 border-rose-500/40 backdrop-blur-sm shadow-lg shadow-rose-500/10"
             >
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-rose-500/20 border-2 border-rose-400/50 rounded-xl mb-6 shadow-inner">
-                <Bug className="w-14 h-14 text-rose-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-rose-500/20 border-2 border-rose-400/50 rounded-xl mb-6 shadow-inner">
+                <Bug className="w-10 h-10 text-rose-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-rose-100">
@@ -392,8 +412,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-orange-900/5 p-8 rounded-2xl border-2 border-orange-500/40 backdrop-blur-sm shadow-lg shadow-orange-500/10"
             >
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-orange-500/20 border-2 border-orange-400/50 rounded-xl mb-6 shadow-inner">
-                <Gauge className="w-14 h-14 text-orange-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/20 border-2 border-orange-400/50 rounded-xl mb-6 shadow-inner">
+                <Gauge className="w-10 h-10 text-orange-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-orange-100">
@@ -419,8 +439,8 @@ export default function Landing({ onNavigate, onViewDocs }) {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="relative bg-gradient-to-br from-purple-500/20 via-purple-600/10 to-purple-900/5 p-8 rounded-2xl border-2 border-purple-500/40 backdrop-blur-sm shadow-lg shadow-purple-500/10"
             >
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-purple-500/20 border-2 border-purple-400/50 rounded-xl mb-6 shadow-inner">
-                <Cpu className="w-14 h-14 text-purple-300" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/20 border-2 border-purple-400/50 rounded-xl mb-6 shadow-inner">
+                <Cpu className="w-10 h-10 text-purple-300" strokeWidth={2.5} />
               </div>
               
               <h3 className="text-2xl font-bold mb-3 text-purple-100">
@@ -644,9 +664,7 @@ export default function Landing({ onNavigate, onViewDocs }) {
       <footer className="py-12 border-t border-white/5 px-6 relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
-              <Code className="w-5 h-5 text-white" />
-            </div>
+            <Logo className="w-10 h-10" />
             <span className="text-lg font-bold">CodeReview AI</span>
           </div>
           <p className="text-neutral-500 text-sm md:text-base text-center md:text-left">
