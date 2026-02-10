@@ -5,7 +5,7 @@ services:
     env: python
     repo: https://github.com/abdulahi-banji/AI-powered-Code-Review-System
     branch: main
-    buildCommand: pip install -r api/requirements.txt
+    buildCommand: pip install -r requirements.txt
     startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
@@ -14,7 +14,3 @@ services:
         value: ""  # Set your OpenAI API key in Render dashboard
       - key: CORS_ORIGINS
         value: "https://ai-powered-code-review-system-eight.vercel.app"  # Vercel frontend URL
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d4a919e (Updated the front-end on landing.jsx)

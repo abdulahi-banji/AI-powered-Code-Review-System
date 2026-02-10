@@ -140,7 +140,7 @@ POST https://ai-code-review-api.onrender.com/review
 AI Code Review System/
 ├── api/                      # FastAPI Backend
 │   ├── main.py              # Main application
-│   └── requirements.txt     # Python dependencies
+
 ├── frontend/                # React Frontend
 │   ├── src/
 │   │   ├── components/
@@ -156,7 +156,7 @@ AI Code Review System/
 ├── render.yaml              # Render deployment config
 ├── vercel.json              # Vercel deployment config
 ├── .vercelignore            # Vercel ignore rules
-├── requirements.txt         # Root requirements
+├── requirements.txt         # Python dependencies
 └── README.md               # This file
 ```
 

@@ -34,7 +34,9 @@ coverage/
 # Misc
 *.pyc
 __pycache__/
+**/*.db
 *.py[cod]
 venv/
 .venv/
+backend/venv/
 
